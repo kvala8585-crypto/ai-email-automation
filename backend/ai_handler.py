@@ -53,7 +53,7 @@ def generate_reply(email_text):
     except Exception as e:
         print("AI ERROR:", e)
 
-        # ✅ fallback
+        # fallback
         return {
             "category": "System",
             "reply": "AI service unavailable, fallback response."
