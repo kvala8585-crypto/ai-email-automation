@@ -21,10 +21,10 @@ def read_emails():
         mail = imaplib.IMAP4_SSL("imap.gmail.com")
         mail.login(EMAIL_USER, EMAIL_PASS)
 
-        # ✅ FIX 1: Use All Mail (Gmail specific)
+        #  FIX 1: Use All Mail (Gmail specific)
         mail.select('"[Gmail]/All Mail"')
 
-        # ✅ You can switch between ALL / UNSEEN
+        #  You can switch between ALL / UNSEEN
         status, messages = mail.search(None, "ALL")
 
         if status != "OK":
@@ -33,11 +33,11 @@ def read_emails():
 
         email_ids = messages[0].split()
 
-        print("📩 TOTAL EMAILS FOUND:", len(email_ids))  # ✅ debug
+        print("📩 TOTAL EMAILS FOUND:", len(email_ids))  #  debug
 
         emails = []
 
-        # ✅ FIX 2: last 5 emails (correct slicing)
+        # FIX 2: last 5 emails (correct slicing)
         for e_id in email_ids[-5:]:
             status, msg_data = mail.fetch(e_id, "(RFC822)")
 
@@ -50,7 +50,7 @@ def read_emails():
 
                     subject = msg.get("subject", "")
 
-                    # ✅ Clean sender email
+                    # Clean sender email
                     raw_sender = msg.get("From", "")
                     sender = parseaddr(raw_sender)[1]
 
