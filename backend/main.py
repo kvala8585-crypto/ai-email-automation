@@ -40,7 +40,7 @@ def process_emails():
         db.add(log)
         db.commit()
 
-        # ✅ AUTO REPLY SEND
+        #  AUTO REPLY SEND
         try:
             send_email(
                 to_email=sender,
